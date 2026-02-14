@@ -55,9 +55,45 @@ void BFS(int start)
     }
     printf("\n");
 }
+void DFS(int v)
+{
+    int i;
+    printf("%d ",v);
+    visited[v]=1;
 
-int main(){
-    
+    for(i=0;i<n;i++)
+    {
+        if(adj[v][i]==1 && visited[i]==0)
+            DFS(i);
+    }
+}
+
+int main()
+{
+    int i,j,start;
+
+    n=5;
+
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            adj[i][j]=0;
+
+    adj[0][1]=adj[1][0]=1;
+    adj[0][2]=adj[2][0]=1;
+    adj[1][3]=adj[3][1]=1;
+    adj[1][4]=adj[4][1]=1;
+    adj[2][4]=adj[4][2]=1;
+
+    start=0;
+
+    BFS(start);
+
+    for(i=0;i<n;i++)
+        visited[i]=0;
+
+    printf("DFS Traversal: ");
+    DFS(start);
+    printf("\n");
 
     return 0;
 }
