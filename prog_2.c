@@ -2,6 +2,8 @@
 #include <ctype.h>
 #include <stdlib.h>
 
+// WAP to convert an infix mathematical expression to postfix and evaluate it
+
 #define MAX 100
 
 char stack[MAX];
