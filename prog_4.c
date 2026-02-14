@@ -52,8 +52,40 @@ struct Node* deleteNode(struct Node* head, struct Node* del)
     return head;
 }
 
-int main(){
-    
+void display(struct Node* head)
+{
+    struct Node* temp = head;
+    while(temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+int main()
+{
+    struct Node* head = createNode(10);
+    struct Node* second = createNode(20);
+    struct Node* third = createNode(30);
+
+    head->next = second;
+    second->prev = head;
+    second->next = third;
+    third->prev = second;
+
+    printf("Original list:\n");
+    display(head);
+
+    insertAfter(second, 25);
+
+    printf("After inserting 25 after 20:\n");
+    display(head);
+
+    head = deleteNode(head, second);
+
+    printf("After deleting 20:\n");
+    display(head);
 
     return 0;
 }
